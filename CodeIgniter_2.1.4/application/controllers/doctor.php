@@ -13,7 +13,7 @@ class Doctor extends CI_Controller {
 	{	
 		$this->load->view('doctorRegForm.html');
 	}
-	public function save_userinput(){
+	public function doctorTempRegistration(){
 		
 			
 			$data['fname'] = $this->input->post("fname");
@@ -24,8 +24,8 @@ class Doctor extends CI_Controller {
 			$data['specialty'] = $this->input->post("specialty");
 			echo $data['fname']." ".$data['lname']." ".$data['email']." ".$data['phone']." ".$data['praczip']." ".$data['specialty']." ";
 	  
-	    $this->load->model('My_model');
-  		$this->My_model->upload_data($data);
+	    $this->load->model('registrationModel');
+  		$this->registrationModel->registerDoctor($data);
 		
 	}
 }

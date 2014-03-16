@@ -1,6 +1,6 @@
 <?php 
 
-class My_model extends CI_Model{
+class registrationModel extends CI_Model{
 	
 	function _construct(){
 		
@@ -14,7 +14,7 @@ class My_model extends CI_Model{
 		return $query->result();
 		}
 		
-	function upload_data($data){
+	function registerDoctor($data){
 		$this->load->database();
 /*		
 			$data['fname'] 
@@ -39,7 +39,29 @@ class My_model extends CI_Model{
 		echo"Record Has Been Added!!";	
 		
 		}
-	function sql_query(){
+	function registerPatient($data){
+		$this->load->database();
+/*		
+			$data['fname'] 
+			$data['lname'] 
+			$data['phone'] 
+			$data['praczip'] 
+			$data['specialty'];
+		
+	*/	
+		//$data['specialty'] = 1;
+		$val = array(
+		'UserName'=> $data['username'],
+		'Email'=>$data['email'],
+		'Password_2'=>$data['password']
+		);
+		$this->db->insert('subscriber',$val);
+		echo"Record Has Been Added!!";	
+		
+		}
+	
+                
+                function sql_query(){
 		$this->load->database();
 		$sql = "Select * From administrator limit 3;";
 		$query_sql=$this->db->query($sql);
